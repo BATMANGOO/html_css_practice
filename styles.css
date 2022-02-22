@@ -1,28 +1,16 @@
-.grid-container {
-  resize: both;
-  overflow: auto;
-  display: grid;
-  gap: 4px;
-  padding: 4px;
-  border: 1px solid grey;
-  background-color: skyblue;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+.red-box,
+.blue-box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
 }
 
-.grid-item {
-  background-color: #444;
-  text-align: center;
-  color: #ddd;
-  font-family: sans-serif;
-  font-size: 1.5rem;
-  padding: 12px;
+.red-box {
+  background: red;
+  transform: rotate(45deg) translate(200%);
 }
 
-p {
-  margin: 12px auto 24px;
-}
-
-img {
-  height: 60px;
+.blue-box {
+  background: blue;
+  transform: translate(200%) rotate(45deg);
 }
