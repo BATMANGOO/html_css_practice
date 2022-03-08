@@ -1,22 +1,61 @@
-p {
-  animation-duration: 3s;
-  animation-name: slidein;
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background: dodgerblue;
+  padding: 32px 64px;
+  font-size: 32px;
+  color: white;
+}
+main {
+  display: flex;
+  flex: 1;
+}
+aside {
+  width: 300px;
+  flex-shrink: 0;
+  background: palevioletred;
+  color: white;
+}
+li {
+  font-size: 24px;
+  list-style-type: none;
 }
 
-@keyframes slidein {
-  from {
-    margin-left: 100%;
-    width: 300%;
-  }
+section {
+  padding: 16px;
+  margin: 16px;
+  font-size: 24px;
+  background: blanchedalmond;
+}
 
-  75% {
-    font-size: 300%;
-    margin-left: 25%;
-    width: 150%;
-  }
+footer {
+  height: 96px;
+  background: darkslateblue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  to {
-    margin-left: 0%;
-    width: 100%;
+@media (max-width: 800px) {
+  main {
+    flex-direction: column;
+  }
+  header {
+    text-align: center;
+    padding: 24px
+  }
+  aside {
+    width: auto;
+  }
+  ul {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    padding: 0;
   }
 }
