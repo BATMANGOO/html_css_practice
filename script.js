@@ -1,7 +1,25 @@
-let Book = function(title, author, isbn) {
-  this.title = title;
-  this.author = author;
-  this.isbn = isbn;
-};
+const documentMock = (() => ({
+  querySelector: (selector) => ({
+    innerHTML: null,
+  }),
+}))();
 
-let book1 = new Book("The Hobbit", "J.R.R. Tolkien", "123456789");
+const Formatter = (function(doc) {
+  const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
+
+  const makeUppercase = (text) => {
+    log("Making uppercase");
+    return text.toUpperCase();
+  };
+
+  const writeToDOM = (selector, message) => {
+    doc.querySelector(selector).innerHTML = message;
+  };
+
+  return {
+    makeUppercase,
+    writeToDOM,
+  }
+})(document || documentMock);
+
+Formatter.writeToDOM("#target", "Hi There");
