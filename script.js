@@ -1,25 +1,23 @@
-const documentMock = (() => ({
-  querySelector: (selector) => ({
-    innerHTML: null,
-  }),
-}))();
+// let calculatorMixin = Base => class extends Base {
+//   calc() { 
+//     console.log('calling calc class');
+//   }
+// };
 
-const Formatter = (function(doc) {
-  const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
+// let randomizerMixin = Base => class extends Base {
+//   randomize() { 
+//     console.log('calling randomize class');
+//   }
+// };
 
-  const makeUppercase = (text) => {
-    log("Making uppercase");
-    return text.toUpperCase();
-  };
+// class Foo { 
+//   food() {
+//     console.log('calling foo class');
+//   }
+// }
+// class Bar extends calculatorMixin(randomizerMixin(Foo)) { }
 
-  const writeToDOM = (selector, message) => {
-    doc.querySelector(selector).innerHTML = message;
-  };
-
-  return {
-    makeUppercase,
-    writeToDOM,
-  }
-})(document || documentMock);
-
-Formatter.writeToDOM("#target", "Hi There");
+// let bar = new Bar();
+// bar.calc();
+// bar.randomize();
+// bar.food();
