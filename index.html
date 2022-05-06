@@ -2,11 +2,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <img src="#">
+  <div class="img-container">
+    <img src="#">
+  </div>
+  <div>
+
+    <button>CLick Me</button>
+  </div>
   <script>
     const img = document.querySelector('img');
+    const button = document.querySelector('button');
     fetch('https://api.giphy.com/v1/gifs/translate?api_key=yXPU5xFYWYruWdr23kdAGbniNst8gPxp&s=cats', {
   mode: 'cors'
     })
@@ -14,6 +22,20 @@
     .then(response => {
       img.src =  response.data.images.original.url;
     })
+    .catch(error => console.log(error));
+
+    function getCatGif() {
+      fetch('https://api.giphy.com/v1/gifs/translate?api_key=yXPU5xFYWYruWdr23kdAGbniNst8gPxp&s=cats', {
+  mode: 'cors'
+    })
+    .then(response => response.json())
+    .then(response => {
+      img.src =  response.data.images.original.url;
+    })
+    .catch(error => console.log(error));
+    }
+
+    button.addEventListener('click', getCatGif);
   </script>
 </body>
 </html>
