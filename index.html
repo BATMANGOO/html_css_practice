@@ -47,11 +47,10 @@
         } catch (error) {
           alert('Something went wrong, try again.');
         }
-
       }
     };
 
-    button.addEventListener('click', () => getGif(search.value));
+    button.addEventListener('click', () => getGif(search.value).catch(error => alert('Something went wrong, try again.')));
   </script>
 </body>
 
