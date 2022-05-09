@@ -6,15 +6,20 @@
 </head>
 <body>
   <div class="img-container">
+    <label for="">
+      Search Gif:
+      <input type="text" id="search-gif" placeholder="Search Gif">
+    </label>
     <img src="#">
   </div>
   <div>
 
-    <button>CLick Me</button>
+    <button class="">CLick Me</button>
   </div>
   <script>
     const img = document.querySelector('img');
     const button = document.querySelector('button');
+    const search = document.querySelector('#search-gif');
     fetch('https://api.giphy.com/v1/gifs/translate?api_key=yXPU5xFYWYruWdr23kdAGbniNst8gPxp&s=cats', {
   mode: 'cors'
     })
@@ -24,18 +29,22 @@
     })
     .catch(error => console.log(error));
 
-    function getCatGif() {
-      fetch('https://api.giphy.com/v1/gifs/translate?api_key=yXPU5xFYWYruWdr23kdAGbniNst8gPxp&s=cats', {
-  mode: 'cors'
-    })
-    .then(response => response.json())
-    .then(response => {
-      img.src =  response.data.images.original.url;
-    })
-    .catch(error => console.log(error));
-    }
+    function getGif(input) {
+      if (input.length <= 0) {
+        alert('Please enter a search term');
+      } else {
+        fetch(`https://api.giphy.com/v1/gifs/translate?api_key=yXPU5xFYWYruWdr23kdAGbniNst8gPxp&s=${input}`, {
+        mode: 'cors'
+          })
+          .then(response => response.json())
+          .then(response => {
+            img.src =  response.data.images.original.url;
+          })
+          .catch(error => console.log(error));
+      }
+    };
 
-    button.addEventListener('click', getCatGif);
+    button.addEventListener('click', () => getGif(search.value));
   </script>
 </body>
 </html>
